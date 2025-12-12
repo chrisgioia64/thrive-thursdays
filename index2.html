@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thrive Thursdays – Placeholder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CSS via CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css"
+  />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo / Brand -->
+        <a href="#home" class="flex items-center space-x-2">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-white font-semibold">
+            TT
+          </span>
+          <span class="font-semibold text-lg tracking-wide">Thrive Thursdays</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="#home" class="nav-link text-slate-700 hover:text-emerald-600">Home</a>
+          <a href="#mission" class="nav-link text-slate-700 hover:text-emerald-600">Mission</a>
+          <a href="#organizers" class="nav-link text-slate-700 hover:text-emerald-600">Organizers</a>
+          <a href="#event-info" class="nav-link text-slate-700 hover:text-emerald-600">Event Info</a>
+          <a href="#media" class="nav-link text-slate-700 hover:text-emerald-600">Media</a>
+          <a href="#photos" class="nav-link text-slate-700 hover:text-emerald-600">Photos</a>
+          <a href="#partners" class="nav-link text-slate-700 hover:text-emerald-600">Partners</a>
+          <a href="#subscribe" class="nav-link text-slate-700 hover:text-emerald-600">Subscribe</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon: Hamburger -->
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-slate-200 bg-white/95 backdrop-blur">
+      <div class="px-4 pt-2 pb-4 space-y-1 text-sm font-medium">
+        <a href="#home" class="block py-1 text-slate-700 hover:text-emerald-600">Home</a>
+        <a href="#mission" class="block py-1 text-slate-700 hover:text-emerald-600">Mission</a>
+        <a href="#organizers" class="block py-1 text-slate-700 hover:text-emerald-600">Organizers</a>
+        <a href="#event-info" class="block py-1 text-slate-700 hover:text-emerald-600">Event Info</a>
+        <a href="#media" class="block py-1 text-slate-700 hover:text-emerald-600">Media</a>
+        <a href="#photos" class="block py-1 text-slate-700 hover:text-emerald-600">Photos</a>
+        <a href="#partners" class="block py-1 text-slate-700 hover:text-emerald-600">Partners</a>
+        <a href="#subscribe" class="block py-1 text-slate-700 hover:text-emerald-600">Subscribe</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="pt-20">
+
+    <!-- ===== HERO ===== -->
+    <section
+      id="home"
+      class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-slate-900 text-white"
+    >
+      <!-- Background image (placeholder) -->
+      <div
+        class="absolute inset-0 bg-cover bg-center opacity-60"
+        style="background-image: url('https://via.placeholder.com/1600x900?text=Hero+Image');"
+      ></div>
+
+      <!-- Overlay -->
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="mb-3 inline-flex items-center rounded-full bg-emerald-500/90 px-4 py-1 text-xs font-semibold uppercase tracking-wide">
+          Placeholder Tagline
+        </p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          Thrive Thursdays
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-slate-100 mb-2">
+          [Event dates go here – e.g., Every Thursday from May to August]
+        </p>
+        <p class="text-sm sm:text-base text-slate-200 mb-4">
+          [Time goes here – e.g., 5:45 – 7:00 pm]
+        </p>
+        <p class="text-sm sm:text-base text-slate-200 mb-6">
+          [Location goes here – e.g., @ Placeholder Park, City, State]
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href="#event-info"
+            class="inline-flex items-center justify-center rounded-md bg-emerald-500 px-6 py-2.5 text-sm font-semibold text-white shadow hover:bg-emerald-600 transition"
+          >
+            View Event Info
+          </a>
+          <a
+            href="#subscribe"
+            class="inline-flex items-center justify-center rounded-md bg-white/10 px-6 py-2.5 text-sm font-semibold text-white border border-white/30 hover:bg-white/20 transition"
+          >
+            Subscribe
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MISSION ===== -->
+    <section id="mission" class="scroll-mt-24 py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">
+          Mission
+        </h2>
+        <p class="text-slate-700 leading-relaxed mb-4">
+          [Mission statement placeholder] This section describes the purpose of
+          Thrive Thursdays – for example, bringing community members together to
+          learn, practice healthy habits, and connect with local resources.
+        </p>
+        <p class="text-slate-700 leading-relaxed">
+          You can replace this paragraph with your real mission copy. Use
+          concise, clear language that explains who the event serves, what
+          participants can expect, and why it matters.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== FLYER ===== -->
+    <section class="scroll-mt-24 py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-2">
+          Flyer
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Upload your event flyers or promotional graphics here (e.g., English &amp; Spanish versions).
+        </p>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="flex flex-col items-center">
+            <div class="w-full aspect-[3/4] bg-slate-200 rounded-lg flex items-center justify-center text-slate-500 text-sm">
+              Flyer Image Placeholder 1
+            </div>
+            <p class="mt-2 text-xs text-slate-500">Flyer 1 (e.g., English)</p>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="w-full aspect-[3/4] bg-slate-200 rounded-lg flex items-center justify-center text-slate-500 text-sm">
+              Flyer Image Placeholder 2
+            </div>
+            <p class="mt-2 text-xs text-slate-500">Flyer 2 (e.g., Spanish)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ORGANIZERS ===== -->
+    <section id="organizers" class="scroll-mt-24 py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">
+          Organizers
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Highlight the key organizers, sponsors, or elected officials who help make the event possible.
+        </p>
+
+        <!-- Organizer banner placeholder -->
+        <div class="w-full mb-8 h-40 md:h-52 bg-slate-200 rounded-lg flex items-center justify-center text-slate-500 text-sm">
+          Organizer Banner Image Placeholder
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="p-4 border border-slate-200 rounded-lg bg-slate-50">
+            <h3 class="text-lg font-semibold text-slate-900">[Organizer Role 1]</h3>
+            <p class="text-sm text-slate-600">[Organizer Name 1]</p>
+          </div>
+          <div class="p-4 border border-slate-200 rounded-lg bg-slate-50">
+            <h3 class="text-lg font-semibold text-slate-900">[Organizer Role 2]</h3>
+            <p class="text-sm text-slate-600">[Organizer Name 2]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVENT INFORMATION / SCHEDULE ===== -->
+    <section id="event-info" class="scroll-mt-24 py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">
+          Event Information
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Use this section to call out upcoming dates, times, and locations.
+        </p>
+
+        <h3 class="text-xl font-semibold text-slate-900 mb-3">Next Events</h3>
+
+        <div class="space-y-4">
+          <!-- Event card 1 -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-lg border border-slate-200 bg-white shadow-sm">
+            <div>
+              <p class="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-1">
+                Upcoming Date
+              </p>
+              <p class="text-base font-medium text-slate-900">
+                [Thursday, Placeholder Date]
+              </p>
+              <p class="text-sm text-slate-600">
+                [Location placeholder – e.g., @ Placeholder Park] &middot; [5:45 – 7:00 pm]
+              </p>
+            </div>
+            <div class="mt-3 md:mt-0">
+              <span class="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 border border-emerald-100">
+                Weekly Event
+              </span>
+            </div>
+          </div>
+
+          <!-- Event card 2 -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between p-4 rounded-lg border border-slate-200 bg-white shadow-sm">
+            <div>
+              <p class="text-sm font-semibold text-emerald-600 uppercase tracking-wide mb-1">
+                Upcoming Date
+              </p>
+              <p class="text-base font-medium text-slate-900">
+                [Thursday, Another Placeholder Date]
+              </p>
+              <p class="text-sm text-slate-600">
+                [Location placeholder] &middot; [5:45 – 7:00 pm]
+              </p>
+            </div>
+            <div class="mt-3 md:mt-0">
+              <span class="inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 border border-slate-200">
+                Sample Schedule Item
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEDIA ===== -->
+    <section id="media" class="scroll-mt-24 py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">
+          Media
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Link to reels, videos, and articles that feature your event.
+        </p>
+
+        <!-- Main media links -->
+        <div class="space-y-3 mb-10">
+          <a href="#" class="block p-4 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">
+            <p class="text-sm font-semibold text-emerald-700">[Main Media Item 1]</p>
+            <p class="text-xs text-slate-600">Short description or platform (e.g., Instagram reel).</p>
+          </a>
+          <a href="#" class="block p-4 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 transition">
+            <p class="text-sm font-semibold text-emerald-700">[Main Media Item 2]</p>
+            <p class="text-xs text-slate-600">Short description or platform (e.g., YouTube video).</p>
+          </a>
+        </div>
+
+        <!-- Additional media sections -->
+        <div class="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-3">Reels (Placeholder)</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#" class="text-emerald-700 hover:text-emerald-800">
+                  [Reel Link 1 – short title]
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-emerald-700 hover:text-emerald-800">
+                  [Reel Link 2 – short title]
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-emerald-700 hover:text-emerald-800">
+                  [Reel Link 3 – short title]
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold text-slate-900 mb-3">TV &amp; News</h3>
+            <ul class="space-y-2 text-sm">
+              <li>
+                <a href="#" class="text-emerald-700 hover:text-emerald-800">
+                  [TV Segment Title Placeholder]
+                </a>
+              </li>
+              <li>
+                <a href="#" class="text-emerald-700 hover:text-emerald-800">
+                  [News Article Title Placeholder]
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHOTOS ===== -->
+    <section id="photos" class="scroll-mt-24 py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">
+          Photos
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Link to photo albums or show a small gallery of highlight shots.
+        </p>
+
+        <!-- Album links -->
+        <div class="space-y-2 text-sm mb-6">
+          <a href="#" class="block text-emerald-700 hover:text-emerald-800">
+            [Photo Album – Placeholder Date 1]
+          </a>
+          <a href="#" class="block text-emerald-700 hover:text-emerald-800">
+            [Photo Album – Placeholder Date 2]
+          </a>
+          <a href="#" class="block text-emerald-700 hover:text-emerald-800">
+            [Photo Album – Placeholder Date 3]
+          </a>
+        </div>
+
+        <!-- Simple photo grid placeholders -->
+        <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+          <div class="aspect-square bg-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-500">
+            Photo Placeholder 1
+          </div>
+          <div class="aspect-square bg-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-500">
+            Photo Placeholder 2
+          </div>
+          <div class="aspect-square bg-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-500">
+            Photo Placeholder 3
+          </div>
+          <div class="aspect-square bg-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-500">
+            Photo Placeholder 4
+          </div>
+          <div class="aspect-square bg-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-500">
+            Photo Placeholder 5
+          </div>
+          <div class="aspect-square bg-slate-200 rounded-lg flex items-center justify-center text-xs text-slate-500">
+            Photo Placeholder 6
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARTNERS ===== -->
+    <section id="partners" class="scroll-mt-24 py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4">
+          Partners
+        </h2>
+        <p class="text-slate-600 mb-6">
+          Showcase logos for partner organizations, sponsors, and collaborators.
+        </p>
+
+        <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+          <!-- Each of these boxes is a logo placeholder -->
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 1
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 2
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 3
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 4
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 5
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 6
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 7
+          </div>
+          <div class="h-20 bg-slate-100 border border-slate-200 rounded flex items-center justify-center text-[10px] uppercase text-slate-500 text-center px-2">
+            Partner Logo 8
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUBSCRIBE ===== -->
+    <section id="subscribe" class="scroll-mt-24 py-16 bg-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold tracking-tight mb-2">
+          Subscribe
+        </h2>
+        <p class="text-slate-200 mb-6">
+          Subscribe to receive updates about Thrive Thursdays and related events.
+        </p>
+
+        <form id="subscribe-form" class="flex flex-col sm:flex-row gap-3">
+          <label for="email" class="sr-only">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            class="w-full sm:w-auto flex-1 rounded-md border border-slate-600 bg-slate-800 px-3 py-2 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-md bg-emerald-500 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-emerald-600 transition"
+          >
+            Join
+          </button>
+        </form>
+
+        <p id="subscribe-success" class="mt-3 text-sm text-emerald-300 hidden">
+          Thanks for subscribing! (Placeholder – connect this to your real mailing list.)
+        </p>
+        <p id="subscribe-error" class="mt-3 text-sm text-rose-300 hidden">
+          Please enter a valid email address.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-slate-500">
+        © <span id="year"></span> Thrive Thursdays (Placeholder). All rights reserved.
+      </p>
+      <div class="flex items-center space-x-4 text-xs">
+        <a href="#" class="text-slate-500 hover:text-emerald-600">Facebook</a>
+        <a href="#" class="text-slate-500 hover:text-emerald-600">Instagram</a>
+        <a href="#" class="text-slate-500 hover:text-emerald-600">Website Info</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== INLINE JAVASCRIPT ===== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Update footer year
+      var yearSpan = document.getElementById('year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Mobile menu toggle
+      var menuButton = document.getElementById('mobile-menu-button');
+      var mobileMenu = document.getElementById('mobile-menu');
+
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', function () {
+          var isHidden = mobileMenu.classList.contains('hidden');
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('block');
+          } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('block');
+          }
+        });
+      }
+
+      // Smooth scroll for in-page links & close mobile menu after click
+      var anchorLinks = document.querySelectorAll('a[href^="#"]');
+      anchorLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var targetId = this.getAttribute('href').substring(1);
+          var targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+          // Close mobile menu after navigation
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('block');
+          }
+        });
+      });
+
+      // Simple subscribe form behavior (front-end only)
+      var subscribeForm = document.getElementById('subscribe-form');
+      var successMsg = document.getElementById('subscribe-success');
+      var errorMsg = document.getElementById('subscribe-error');
+      var emailInput = document.getElementById('email');
+
+      if (subscribeForm && emailInput) {
+        subscribeForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var emailValue = emailInput.value.trim();
+          var isValidEmail = !!emailValue && emailValue.includes('@');
+
+          if (isValidEmail) {
+            if (successMsg) successMsg.classList.remove('hidden');
+            if (errorMsg) errorMsg.classList.add('hidden');
+            // Clear field for demo purposes
+            emailInput.value = '';
+          } else {
+            if (errorMsg) errorMsg.classList.remove('hidden');
+            if (successMsg) successMsg.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

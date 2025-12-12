@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thrive Thursdays – Placeholder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ✅ Tailwind via official CDN script -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom CSS -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .nav-link:focus {
+      outline: 2px solid #10b981; /* emerald-500 */
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+
+  <!-- ===== HEADER ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Brand -->
+        <a href="#home" class="flex items-center space-x-2">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500 text-white font-semibold">TT</span>
+          <span class="font-semibold text-lg tracking-wide">Thrive Thursdays</span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex space-x-6 text-sm font-medium">
+          <a href="#home" class="nav-link text-slate-700 hover:text-emerald-600">Home</a>
+          <a href="#mission" class="nav-link text-slate-700 hover:text-emerald-600">Mission</a>
+          <a href="#organizers" class="nav-link text-slate-700 hover:text-emerald-600">Organizers</a>
+          <a href="#event-info" class="nav-link text-slate-700 hover:text-emerald-600">Event Info</a>
+          <a href="#media" class="nav-link text-slate-700 hover:text-emerald-600">Media</a>
+          <a href="#photos" class="nav-link text-slate-700 hover:text-emerald-600">Photos</a>
+          <a href="#partners" class="nav-link text-slate-700 hover:text-emerald-600">Partners</a>
+          <a href="#subscribe" class="nav-link text-slate-700 hover:text-emerald-600">Subscribe</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button"
+          class="md:hidden p-2 rounded-md text-slate-700 hover:bg-slate-100 focus:ring-2 focus:ring-emerald-500">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white">
+      <div class="px-4 py-2 space-y-1 text-sm font-medium">
+        <a href="#home" class="block py-1 text-slate-700 hover:text-emerald-600">Home</a>
+        <a href="#mission" class="block py-1 text-slate-700 hover:text-emerald-600">Mission</a>
+        <a href="#organizers" class="block py-1 text-slate-700 hover:text-emerald-600">Organizers</a>
+        <a href="#event-info" class="block py-1 text-slate-700 hover:text-emerald-600">Event Info</a>
+        <a href="#media" class="block py-1 text-slate-700 hover:text-emerald-600">Media</a>
+        <a href="#photos" class="block py-1 text-slate-700 hover:text-emerald-600">Photos</a>
+        <a href="#partners" class="block py-1 text-slate-700 hover:text-emerald-600">Partners</a>
+        <a href="#subscribe" class="block py-1 text-slate-700 hover:text-emerald-600">Subscribe</a>
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="pt-20">
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="relative min-h-[70vh] flex items-center justify-center text-white bg-slate-900">
+      <div class="absolute inset-0 bg-cover bg-center opacity-60"
+        style="background-image:url('https://via.placeholder.com/1600x900?text=Hero');"></div>
+
+      <div class="relative z-10 text-center max-w-3xl px-4">
+        <p class="mb-3 inline-block bg-emerald-500 px-4 py-1 text-xs rounded-full">
+          Placeholder Tagline
+        </p>
+
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Thrive Thursdays</h1>
+        <p class="text-base md:text-lg text-slate-100">[Event dates here]</p>
+        <p class="text-sm text-slate-200">[Time here]</p>
+        <p class="text-sm text-slate-200 mb-6">[Location here]</p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-3">
+          <a href="#event-info" class="bg-emerald-500 px-6 py-2.5 rounded-md text-sm font-semibold hover:bg-emerald-600">
+            Event Info
+          </a>
+          <a href="#subscribe" class="border border-white px-6 py-2.5 rounded-md text-sm font-semibold hover:bg-white/10">
+            Subscribe
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MISSION ===== -->
+    <section id="mission" class="py-16 bg-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Mission</h2>
+        <p class="text-slate-700">
+          [Mission statement placeholder text...]
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== FLYER ===== -->
+    <section class="py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-2">Flyer</h2>
+        <div class="grid md:grid-cols-2 gap-6 mt-6">
+          <div class="bg-slate-200 h-80 rounded flex items-center justify-center text-slate-600">Flyer 1</div>
+          <div class="bg-slate-200 h-80 rounded flex items-center justify-center text-slate-600">Flyer 2</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ORGANIZERS ===== -->
+    <section id="organizers" class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Organizers</h2>
+
+        <div class="bg-slate-200 h-52 rounded mb-8 flex items-center justify-center text-slate-600">
+          Organizer Banner Placeholder
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-4 bg-slate-50 border rounded">[Organizer 1]</div>
+          <div class="p-4 bg-slate-50 border rounded">[Organizer 2]</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVENT INFO ===== -->
+    <section id="event-info" class="py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Event Information</h2>
+
+        <div class="space-y-4">
+          <div class="p-4 bg-white border rounded shadow-sm">
+            <p class="font-semibold text-emerald-600 text-sm uppercase">Upcoming Date</p>
+            <p>[Thursday, Placeholder Date]</p>
+            <p class="text-sm text-slate-600">[Location • Time]</p>
+          </div>
+
+          <div class="p-4 bg-white border rounded shadow-sm">
+            <p class="font-semibold text-emerald-600 text-sm uppercase">Upcoming Date</p>
+            <p>[Another Placeholder Date]</p>
+            <p class="text-sm text-slate-600">[Location • Time]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MEDIA ===== -->
+    <section id="media" class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Media</h2>
+
+        <div class="space-y-3 mb-10">
+          <div class="p-4 bg-slate-50 border rounded">[Main Media Item 1]</div>
+          <div class="p-4 bg-slate-50 border rounded">[Main Media Item 2]</div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold mb-3">Reels</h3>
+            <ul class="space-y-1 text-emerald-700 text-sm">
+              <li>[Reel Link 1]</li>
+              <li>[Reel Link 2]</li>
+              <li>[Reel Link 3]</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold mb-3">TV &amp; News</h3>
+            <ul class="space-y-1 text-emerald-700 text-sm">
+              <li>[TV Segment]</li>
+              <li>[News Article]</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== PHOTOS ===== -->
+    <section id="photos" class="py-16 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Photos</h2>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-slate-200 aspect-square rounded flex items-center justify-center text-slate-600 text-xs">Photo 1</div>
+          <div class="bg-slate-200 aspect-square rounded flex items-center justify-center text-slate-600 text-xs">Photo 2</div>
+          <div class="bg-slate-200 aspect-square rounded flex items-center justify-center text-slate-600 text-xs">Photo 3</div>
+          <div class="bg-slate-200 aspect-square rounded flex items-center justify-center text-slate-600 text-xs">Photo 4</div>
+          <div class="bg-slate-200 aspect-square rounded flex items-center justify-center text-slate-600 text-xs">Photo 5</div>
+          <div class="bg-slate-200 aspect-square rounded flex items-center justify-center text-slate-600 text-xs">Photo 6</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PARTNERS ===== -->
+    <section id="partners" class="py-16 bg-white">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Partners</h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 1</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 2</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 3</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 4</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 5</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 6</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 7</div>
+          <div class="bg-slate-100 h-20 border rounded flex items-center justify-center text-xs text-slate-600">Logo 8</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUBSCRIBE ===== -->
+    <section id="subscribe" class="py-16 bg-slate-900 text-white">
+      <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-4">Subscribe</h2>
+
+        <form id="subscribe-form" class="flex flex-col sm:flex-row gap-3">
+          <input id="email" type="email" placeholder="you@example.com"
+            class="flex-1 px-3 py-2 bg-slate-800 border border-slate-600 rounded text-sm">
+          <button type="submit" class="px-4 py-2 bg-emerald-500 rounded text-sm font-semibold">
+            Join
+          </button>
+        </form>
+
+        <p id="subscribe-success" class="mt-3 text-emerald-300 hidden text-sm">
+          Thanks for subscribing!
+        </p>
+        <p id="subscribe-error" class="mt-3 text-rose-300 hidden text-sm">
+          Please enter a valid email.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t bg-white py-6">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-2">
+      <p class="text-xs text-slate-500">
+        © <span id="year"></span> Thrive Thursdays.
+      </p>
+      <div class="flex space-x-4 text-xs">
+        <a href="#" class="text-slate-500 hover:text-emerald-600">Facebook</a>
+        <a href="#" class="text-slate-500 hover:text-emerald-600">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile menu
+      const menuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Smooth scroll + close menu on click
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", (e) => {
+          const id = link.getAttribute("href").substring(1);
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Subscribe form
+      const form = document.getElementById("subscribe-form");
+      const email = document.getElementById("email");
+      const success = document.getElementById("subscribe-success");
+      const error = document.getElementById("subscribe-error");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const value = email.value.trim();
+        if (value && value.includes("@")) {
+          success.classList.remove("hidden");
+          error.classList.add("hidden");
+          email.value = "";
+        } else {
+          success.classList.add("hidden");
+          error.classList.remove("hidden");
+        }
+      });
+
+    });
+  </script>
+
+</body>
+</html>

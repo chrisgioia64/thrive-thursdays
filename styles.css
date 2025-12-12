@@ -1,0 +1,11 @@
+/* Global smooth scrolling */
+html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Optional: tweak focus outline color for links in the navbar */
+  .nav-link:focus {
+    outline: 2px solid #10b981; /* emerald-500 */
+    outline-offset: 2px;
+  }
+  
