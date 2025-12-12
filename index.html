@@ -12,8 +12,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'thrive-green': '#16a34a', // Adjusted to a vibrant park green
-                        'thrive-blue': '#2563eb',  // Adjusted to a standard bright blue
+                        'thrive-green': '#009A44', /* The Thrive Brand Green */
+                        'thrive-blue': '#007ACC',  /* ADJUSTED: Less electric, more harmonious blue */
                         'thrive-dark': '#1f2937',
                     },
                     fontFamily: {
@@ -23,30 +23,49 @@
             }
         }
     </script>
+    
     <style>
-        /* Smooth scrolling */
         html { scroll-behavior: smooth; }
-        /* Custom scrollbar to match theme */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #16a34a; border-radius: 4px; }
+
+        /* Dev-only image helper (disabled by default).
+           Add class="debug" to <body> while developing to see missing images. */
+        .debug img { 
+            min-height: 50px; 
+            background-color: #f3f4f6; 
+            position: relative; 
+            color: transparent; 
+        }
+        .debug img[alt]::after { 
+            content: "MISSING: " attr(src); 
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            position: absolute; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            background-color: #ffe4e6; 
+            color: #ef4444; 
+            font-size: 12px; 
+            text-align: center;
+            border: 2px dashed #f87171;
+            padding: 4px;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans leading-relaxed">
 
     <nav class="bg-white shadow-md fixed w-full z-50 top-0">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-thrive-green uppercase tracking-wide">
+            <a href="#home" class="text-2xl font-bold text-thrive-green uppercase tracking-wide">
                 Thrive <span class="text-thrive-blue">Thursdays</span>
             </a>
 
             <div class="hidden md:flex space-x-6 font-medium text-gray-600">
-                <a href="#home" class="hover:text-thrive-green transition">Home</a>
-                <a href="#mission" class="hover:text-thrive-green transition">Mission</a>
-                <a href="#organizers" class="hover:text-thrive-green transition">Organizers</a>
-                <a href="#event-info" class="hover:text-thrive-green transition">Event Info</a>
-                <a href="#media" class="hover:text-thrive-green transition">Media</a>
-                <a href="#partners" class="hover:text-thrive-green transition">Partners</a>
+                <a href="#home" data-section="home" class="hover:text-thrive-green transition nav-link">Home</a>
+                <a href="#event-info" data-section="event-info" class="hover:text-thrive-green transition nav-link">Event Info</a>
+                <a href="#mission" data-section="mission" class="hover:text-thrive-green transition nav-link">Mission</a>
+                <a href="#organizers" data-section="organizers" class="hover:text-thrive-green transition nav-link">Organizers</a>
+                <a href="#media" data-section="media" class="hover:text-thrive-green transition nav-link">Media</a>
+                <a href="#partners" data-section="partners" class="hover:text-thrive-green transition nav-link">Partners</a>
             </div>
 
             <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-thrive-green focus:outline-none">
@@ -55,240 +74,693 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-100">
-            <a href="#home" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition">Home</a>
-            <a href="#mission" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition">Mission</a>
-            <a href="#organizers" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition">Organizers</a>
-            <a href="#event-info" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition">Event Info</a>
-            <a href="#media" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition">Media</a>
-            <a href="#partners" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition">Partners</a>
+            <a href="#home" data-section="home" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition nav-link">Home</a>
+            <a href="#event-info" data-section="event-info" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition nav-link">Event Info</a>
+            <a href="#mission" data-section="mission" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition nav-link">Mission</a>
+            <a href="#organizers" data-section="organizers" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition nav-link">Organizers</a>
+            <a href="#media" data-section="media" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition nav-link">Media</a>
+            <a href="#partners" data-section="partners" class="block px-4 py-3 hover:bg-thrive-green hover:text-white transition nav-link">Partners</a>
         </div>
     </nav>
 
-    <section id="home" class="relative pt-24 pb-12 md:pt-32 md:pb-24 bg-gray-900">
+    <!-- HERO -->
+    <section id="home" class="relative pt-24 pb-16 md:pt-32 md:pb-20 bg-gray-900 min-h-[55vh] md:min-h-[60vh] flex items-center">
         <div class="absolute inset-0 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" 
-                 alt="Park Background" 
-                 class="w-full h-full object-cover opacity-40">
+            <img src="banner.jpg" 
+                 alt="Thrive Thursdays community event at the park" 
+                 class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/90"></div>
         </div>
         
-        <div class="relative container mx-auto px-4 text-center text-white">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">Thrive Thursdays</h1>
-            <div class="inline-block bg-thrive-green px-6 py-2 rounded-full text-lg font-semibold mb-6">
+        <div class="relative container mx-auto px-4 text-center text-white z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight drop-shadow-lg">
+                Thrive Thursdays
+            </h1>
+    
+            <div class="inline-block bg-thrive-green px-6 py-2 rounded-full text-base md:text-lg font-semibold mb-8 shadow-lg">
                 Richmond, CA
             </div>
             
-            <div class="max-w-3xl mx-auto bg-black bg-opacity-60 p-6 md:p-8 rounded-xl border border-gray-700 backdrop-blur-sm">
-                <p class="text-xl md:text-2xl font-bold mb-2">Every Thursday May 15th, 2025 - August 14th, 2025</p>
-                <p class="text-lg md:text-xl text-yellow-300 font-medium mb-4">5:45 - 7:00pm</p>
+            <div class="max-w-3xl mx-auto bg-black/70 p-8 md:p-10 rounded-xl border border-gray-600 backdrop-blur-sm shadow-2xl">
+                <p class="text-lg md:text-2xl font-bold mb-4">Coming Summer 2026</p>
+                <p class="text-base md:text-xl text-yellow-400 font-bold mb-8 tracking-wide">Thursdays from 5:45 - 7:00pm</p>
                 
-                <div class="flex flex-col items-center justify-center space-y-2">
-                    <p class="flex items-center text-lg">
-                        <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
-                        @ Nicholl Park (3230 Macdonald Avenue)
-                    </p>
-                    <p class="text-sm text-gray-300 italic">(Location changed from 2024 which was at MLK Park)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="mission" class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center max-w-4xl">
-            <h2 class="text-3xl font-bold text-thrive-green mb-8 uppercase border-b-4 border-thrive-blue inline-block pb-2">Mission</h2>
-            <p class="text-xl text-gray-700 leading-relaxed mb-12">
-                Thrive Thursday / <span class="font-bold text-thrive-blue">Health 4 All</span> aims to create a space where the community could gather, learn and practice healthy habits by accessing information, resources, and participating in organized physical activity.
-            </p>
-            
-            <div class="bg-gray-100 p-4 rounded-lg shadow-inner max-w-lg mx-auto border-2 border-dashed border-gray-300">
-                <div class="aspect-[3/4] flex items-center justify-center text-gray-400">
-                    <div class="text-center">
-                        <i class="fas fa-file-image text-5xl mb-3"></i>
-                        <p>2025 Flyer Image</p>
-                        <p class="text-xs">(PasosXThriveThursday2025_Spanish.png)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="organizers" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-thrive-green uppercase">Organizers</h2>
-                <div class="w-24 h-1 bg-thrive-blue mx-auto mt-4"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition transform hover:-translate-y-1">
-                    <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-6 overflow-hidden">
-                        <img src="https://ui-avatars.com/api/?name=Doria+Robinson&background=16a34a&color=fff&size=128" alt="Doria Robinson" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900">Doria Robinson</h3>
-                    <p class="text-thrive-blue font-medium">Richmond Councilmember</p>
-                </div>
-
-                <div class="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition transform hover:-translate-y-1">
-                    <div class="w-32 h-32 mx-auto bg-gray-200 rounded-full mb-6 overflow-hidden">
-                        <img src="https://ui-avatars.com/api/?name=John+Gioia&background=2563eb&color=fff&size=128" alt="John Gioia" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900">John Gioia</h3>
-                    <p class="text-thrive-blue font-medium">County Supervisor</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="event-info" class="py-16 bg-thrive-dark text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-8 uppercase text-thrive-green">Event Information</h2>
-            
-            <div class="bg-gray-800 p-8 rounded-2xl inline-block border border-gray-600 max-w-2xl w-full">
-                <h3 class="text-2xl font-semibold mb-6 text-white">Next Events</h3>
-                
-                <div class="flex flex-col space-y-4">
-                    <div class="bg-gray-700 p-4 rounded-lg flex items-center justify-between">
-                        <div class="text-left">
-                            <span class="block text-thrive-green font-bold text-lg">Thursday July 31st, 2025</span>
-                            <span class="text-gray-300 text-sm">@ Nicholl Park</span>
-                        </div>
-                        <div class="text-right">
-                            <span class="block font-bold">5:45 - 7:00pm</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="media" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-thrive-green mb-12 uppercase">Media</h2>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="space-y-6">
-                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-3">Videos & Highlights</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> Thrive Thursday Returns 2025</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> Let's Bike Smoothies</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> John chats with 106KMEL's Fillmoe Mike</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> CoCoKids supports ThriveThursdays</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> San Francisco Bay Conservation and Develpoment Commission (BCDC)</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> 106KMEL's Fillmoe Mike hypes the crowd</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> John's Super Staff Tania Pulido at ThriveThursdays</a></li>
-                        <li><a href="#" class="text-thrive-blue hover:underline hover:text-thrive-green transition flex items-start"><i class="fas fa-play-circle mt-1 mr-2 text-gray-400"></i> ThriveThursday Finale for 2023 Gratitude Speeches</a></li>
-                    </ul>
-                </div>
-
-                <div class="space-y-6">
-                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-3">Reels (July 2023)</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> July 21st Reel - (music: Feels like Summer)</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> July 21st Reel - (music: Summer Love)</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> July 20th Reel - John's Speech</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> July 20th Reel - John talking with Reporters</a></li>
-                    </ul>
-                    
-                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-3 mt-8">Reels (August 2023)</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> August 10th (Get it Girl Fitness)</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> August 10th (Walk with a Doc)</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fab fa-instagram mr-2 text-pink-500"></i> August 3rd (Moving Forward)</a></li>
-                    </ul>
-                </div>
-
-                <div class="space-y-6">
-                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-3">TV Videos & News</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fas fa-tv mr-2 text-gray-500"></i> KTVU Broadcast on Women's Soccer</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fas fa-microphone mr-2 text-gray-500"></i> Speech on Girls Sports Equity</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fas fa-tv mr-2 text-gray-500"></i> KTVU Special on #ThriveThursday kickoff</a></li>
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fas fa-tv mr-2 text-gray-500"></i> KTVU Coverage of #ThriveThursday kickoff</a></li>
-                    </ul>
-
-                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-3 mt-8">News Articles</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-700 hover:text-thrive-green transition"><i class="fas fa-newspaper mr-2 text-gray-500"></i> Richmond Standard Story on the Kickoff</a></li>
-                    </ul>
+                <div class="mt-2 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#event-info" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-thrive-green text-white text-sm md:text-base font-semibold shadow-lg hover:bg-emerald-600 transition">
+                        <i class="fas fa-calendar-check mr-2"></i> Event Details
+                    </a>
+                    <a href="#newsletter" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-white/60 text-white text-sm md:text-base font-semibold hover:bg-white hover:text-gray-900 transition">
+                        <i class="fas fa-envelope-open-text mr-2"></i> Get Email Updates
+                    </a>
                 </div>
             </div>
         </div>
     </section>
     
-    <section class="py-16 bg-gray-50">
+
+    <!-- EVENT INFO -->
+    <section id="event-info" class="py-20 bg-gray-50 scroll-mt-24">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-thrive-green uppercase inline-block border-b-4 border-thrive-blue pb-2 tracking-wide">
+                    Event Info
+                </h2>
+            </div>
+    
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center md:text-left">
+                    <h3 class="font-semibold text-gray-900 mb-2 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-calendar-day text-thrive-blue mr-2"></i> When
+                    </h3>
+                    <p class="text-gray-700 text-sm md:text-base">
+                        Every Thursday, Summer 2026<br>
+                        5:45 – 7:00 PM
+                    </p>
+                </div>
+    
+                <div class="text-center md:text-left">
+                    <h3 class="font-semibold text-gray-900 mb-2 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Where
+                    </h3>
+                    <p class="text-gray-700 text-sm md:text-base">
+                        Nicholl Park<br>
+                        3230 Macdonald Avenue, Richmond, CA
+                    </p>
+                    <p class="text-xs text-gray-500 mt-1 italic">
+                        (New location; previously MLK Park in 2024)
+                    </p>
+                </div>
+    
+                <div class="text-center md:text-left">
+                    <h3 class="font-semibold text-gray-900 mb-2 flex items-center justify-center md:justify-start">
+                        <i class="fas fa-users text-thrive-green mr-2"></i> Who
+                    </h3>
+                    <p class="text-gray-700 text-sm md:text-base">
+                        Families, kids, seniors, and anyone interested in free fitness, health resources, and community connection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- MISSION -->
+    <section id="mission" class="py-20 bg-white scroll-mt-24">
+        <div class="container mx-auto px-4 text-center max-w-5xl">
+
+            <h2 class="text-3xl md:text-4xl font-bold text-thrive-green mb-12 uppercase inline-block border-b-4 border-thrive-blue pb-2 tracking-wide">
+                Mission
+            </h2>
+
+            <p class="text-lg md:text-2xl text-gray-700 leading-relaxed mb-16 max-w-3xl mx-auto">
+                Thrive Thursday / <span class="font-bold text-thrive-blue">Health 4 All</span> aims to create a space where the community can gather, learn, and practice healthy habits by accessing information, resources, and participating in organized physical activity.
+            </p>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="shadow-2xl rounded-lg overflow-hidden border border-gray-200 hover:shadow-3xl transition duration-300">
+                        <img src="PasosXThriveThursday2025_English.png" alt="Thrive Thursday 2025 English flyer" class="w-full h-auto">
+                    </div>
+
+                    <div class="shadow-2xl rounded-lg overflow-hidden border border-gray-200 hover:shadow-3xl transition duration-300">
+                        <img src="PasosXThriveThursday2025_Spanish.png" alt="Thrive Thursday 2025 Spanish flyer" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ORGANIZERS -->
+    <section id="organizers" class="py-20 bg-gray-50 scroll-mt-24">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-thrive-green mb-12 uppercase">Photos</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-white p-2 rounded shadow">
-                    <div class="h-64 bg-gray-200 flex items-center justify-center text-gray-400">
-                        <span>June 12th, 2025 Photo</span>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-thrive-green mb-2 uppercase inline-block border-b-4 border-thrive-blue pb-2 tracking-wide">
+                    Organizers
+                </h2>
+            </div>
+    
+            <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                <!-- Rising Juntos -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 text-center hover:-translate-y-2 transition duration-300">
+                    <div class="w-40 h-40 mx-auto bg-gray-200 rounded-full mb-6 overflow-hidden border-4 border-thrive-green shadow-sm">
+                        <img src="RisingJuntos.png" alt="Rising Juntos logo" class="w-full h-full object-cover">
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Rising Juntos</h3>
+                    <p class="text-thrive-blue font-bold uppercase tracking-wider text-sm">Community-Powered Organization</p>
+                    <p class="text-sm text-gray-700 mt-4">
+                        Builds community power with families to advance racial and health justice.
+                    </p>
                 </div>
-                 <div class="bg-white p-2 rounded shadow">
-                    <div class="h-64 bg-gray-200 flex items-center justify-center text-gray-400">
-                        <span>June 5th, 2025 Photo</span>
+    
+                <!-- Doria Robinson -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 text-center hover:-translate-y-2 transition duration-300">
+                    <div class="w-40 h-40 mx-auto bg-gray-200 rounded-full mb-6 overflow-hidden border-4 border-thrive-green shadow-sm">
+                        <img src="Doria_Robinson.jpeg" alt="Portrait of Doria Robinson, Richmond Councilmember" class="w-full h-full object-cover">
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">Doria Robinson</h3>
+                    <p class="text-thrive-blue font-bold uppercase tracking-wider text-sm">Richmond Councilmember</p>
+                    <p class="text-sm text-gray-700 mt-4">
+                        A lifelong Richmond resident and community organizer, Doria champions food justice, climate resilience, and neighborhood health.
+                    </p>
                 </div>
-                 <div class="bg-white p-2 rounded shadow">
-                    <div class="h-64 bg-gray-200 flex items-center justify-center text-gray-400">
-                        <span>May 29th, 2025 Photo</span>
+    
+                <!-- John Gioia -->
+                <div class="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 text-center hover:-translate-y-2 transition duration-300">
+                    <div class="w-40 h-40 mx-auto bg-gray-200 rounded-full mb-6 overflow-hidden border-4 border-thrive-blue shadow-sm">
+                        <img src="john_gioia.jpg" alt="Portrait of John Gioia, County Supervisor" class="w-full h-full object-cover">
                     </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-1">John Gioia</h3>
+                    <p class="text-thrive-blue font-bold uppercase tracking-wider text-sm">County Supervisor</p>
+                    <p class="text-sm text-gray-700 mt-4">
+                        John works to expand access to health care, clean air, and safe public spaces for families throughout Contra Costa County.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+    
 
-    <section id="partners" class="py-16 bg-white">
+    <!-- MEDIA -->
+    <section id="media" class="py-20 bg-gray-50 scroll-mt-24">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-thrive-green mb-4 uppercase inline-block border-b-4 border-thrive-blue pb-2 tracking-wide">
+                Media &amp; Press
+            </h2>
+        </div>
+        
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
+                
+                <!-- Videos -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-4 mb-3">Videos</h3>
+    
+                    <div class="space-y-3 text-sm mt-2">
+
+                        <a href="https://www.instagram.com/reel/Cw7ys0Zr84A/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                            Let's Bike Smoothies
+                        </a>
+                    
+                        <a href="https://www.instagram.com/reel/Cw88c2lJVwx/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                            John chats with 106KMEL's Fillmoe Mike
+                        </a>
+                    
+                        <a href="https://www.instagram.com/reel/CxDrg2wLS-Z/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                            CoCoKids supports Thrive Thursdays
+                        </a>
+                    
+                        <a href="https://www.instagram.com/reel/CxEkveHplfv/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                            BCDC – Bay Conservation & Development Commission
+                        </a>
+                    
+                        <a href="https://www.instagram.com/reel/CxJqIDiPd8R/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                            106KMEL's Fillmoe Mike hypes the crowd
+                        </a>
+                    
+                        <a href="https://www.instagram.com/reel/CxJuKfwJx_a/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                            John's Super Staff – Tania Pulido
+                        </a>
+                    
+                        <a href="https://youtu.be/8xtdVtkab8M"
+                           target="_blank" rel="noopener noreferrer"
+                           class="flex items-center text-gray-700 hover:text-thrive-green transition group">
+                            <i class="fab fa-youtube text-lg mr-3 text-thrive-blue"></i>
+                            Thrive Thursday Finale (2023)
+                        </a>
+                    
+                    </div>
+                </div>
+    
+                <!-- Social Reels -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-4 mb-3">Social Reels</h3>
+                    
+                    <h4 class="font-bold text-gray-500 text-xs uppercase mb-4">July 2023</h4>
+                    <ul class="space-y-3 text-sm">
+    
+                        <li>
+                            <a href="https://www.instagram.com/p/Cu-IT2NL7QA/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                                July 21st Reel – Feels Like Summer
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.instagram.com/p/Cu-C7fPpad9/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                                July 21st Reel – Summer Love
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.facebook.com/reel/992247141911879"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-facebook text-lg mr-3 text-thrive-blue"></i>
+                                July 20th Reel – John's Speech
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.facebook.com/reel/3129032030733516"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-facebook text-lg mr-3 text-thrive-blue"></i>
+                                July 20th Reel – Talking with Reporters
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <h4 class="font-bold text-gray-500 text-xs uppercase mt-8 mb-4">August 2023</h4>
+                    <ul class="space-y-3 text-sm">
+    
+                        <li>
+                            <a href="https://www.instagram.com/p/Cv0dmquNN0M/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                                August 10th (Get it Girl Fitness)
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.instagram.com/p/CvyrFzQslJL/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                                August 10th (Walk with a Doc)
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.instagram.com/p/Cvghvu3tIm7/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-center text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-instagram text-lg mr-3 text-thrive-blue"></i>
+                                August 3rd (Moving Forward)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- TV & News Articles -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                    <h3 class="text-xl font-bold text-gray-900 border-l-4 border-thrive-blue pl-4 mb-6">TV &amp; News Articles</h3>
+                    
+                    <div class="mb-6 pb-6 border-b border-gray-200">
+                        <h4 class="text-sm font-bold mb-4 text-gray-800">
+                            Thrive Thursday Featured on KTVU Bay Area
+                        </h4>
+                        <div class="aspect-video shadow-xl rounded-lg overflow-hidden">
+                            <iframe class="w-full h-full" 
+                                    src="https://www.youtube.com/embed/8Llkm5pKh6w"
+                                    title="#ThriveThursday Featured on KTVU Bay Area"
+                                    frameborder="0" 
+                                    loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+    
+                    <ul class="space-y-3 mb-6 text-sm">
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=vdC-QxwzbNo"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-start text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-youtube mt-1 mr-3 text-thrive-blue"></i>
+                                KTVU Broadcast on Women's Soccer
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=0Ht5wxKXEKI"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-start text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-youtube mt-1 mr-3 text-thrive-blue"></i>
+                                Speech on Girls Sports Equity
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.facebook.com/1387574840/videos/239893012116810/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-start text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-facebook mt-1 mr-3 text-thrive-blue"></i>
+                                KTVU Special on #ThriveThursday
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=8Llkm5pKh6w&feature=youtu.be"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-start text-gray-700 hover:text-thrive-green transition">
+                                <i class="fab fa-youtube mt-1 mr-3 text-thrive-blue"></i>
+                                KTVU Coverage of Kickoff
+                            </a>
+                        </li>
+                    </ul>
+    
+                    <h3 class="text-lg font-bold text-gray-900 border-l-4 border-thrive-blue pl-4 mb-4">News Articles</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li>
+                            <a href="https://richmondstandard.com/richmond/2023/06/23/thrive-thursday-debuts-at-martin-luther-king-park/"
+                               target="_blank" rel="noopener noreferrer"
+                               class="flex items-start text-gray-700 hover:text-thrive-green transition">
+                                <i class="fas fa-newspaper mt-1 mr-3 text-thrive-blue"></i>
+                                Richmond Standard – Thrive Thursday Kickoff
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- PHOTOS -->
+    <section id="photos" class="py-20 bg-gray-100 scroll-mt-24">
+        <div class="container mx-auto px-4">
+            
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-thrive-green mb-4 uppercase inline-block border-b-4 border-thrive-blue pb-2 tracking-wide">
+                    Photos
+                </h2>
+                <p class="text-base md:text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
+                    Each week has its own photo album. Click a date to view the full gallery on Flickr.
+                </p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+                <!-- June 12 -->
+                <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
+                    
+                    <p class="text-center font-bold mb-4 text-base tracking-wider">
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326864399/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="text-thrive-blue hover:text-thrive-green transition">
+                            June 12, 2025
+                        </a>
+                    </p>
+    
+                    <div class="aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-gray-100">
+                        <img src="ThriveThursday_2025_06_12_1.jpeg"
+                             alt="Thrive Thursday June 12, 2025 – photo 1"
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+    
+                    <div class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
+                        <img src="ThriveThursday_2025_06_12_2.jpeg"
+                             alt="Thrive Thursday June 12, 2025 – photo 2"
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+    
+                    <div class="mt-6 text-center">
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326864399/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="inline-block px-4 py-1.5 rounded-lg bg-thrive-blue text-white text-sm font-semibold hover:bg-thrive-green transition shadow">
+                            View More on Flickr
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- June 5 -->
+                <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
+                    
+                    <p class="text-center font-bold mb-4 text-base tracking-wider">
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326660985/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="text-thrive-blue hover:text-thrive-green transition">
+                            June 5, 2025
+                        </a>
+                    </p>
+    
+                    <div class="aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-gray-100">
+                        <img src="ThriveThursday_2025_06_05_1.jpeg"
+                             alt="Thrive Thursday June 5, 2025 – photo 1"
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+    
+                    <div class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
+                        <img src="ThriveThursday_2025_06_05_2.jpeg"
+                             alt="Thrive Thursday June 5, 2025 – photo 2"
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+    
+                    <div class="mt-6 text-center">
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326660985/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="inline-block px-4 py-1.5 rounded-lg bg-thrive-blue text-white text-sm font-semibold hover:bg-thrive-green transition shadow">
+                            View More on Flickr
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- May 29 -->
+                <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
+                    
+                    <p class="text-center font-bold mb-4 text-base tracking-wider">
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326522319/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="text-thrive-blue hover:text-thrive-green transition">
+                            May 29, 2025
+                        </a>
+                    </p>
+    
+                    <div class="aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-gray-100">
+                        <img src="ThriveThursday_2025_05_29_2.jpeg"
+                             alt="Thrive Thursday May 29, 2025 – photo 2"
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+    
+                    <div class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
+                        <img src="ThriveThursday_2025_05_29_1.jpeg"
+                             alt="Thrive Thursday May 29, 2025 – photo 1"
+                             class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+    
+                    <div class="mt-6 text-center">
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326522319/"
+                           target="_blank" rel="noopener noreferrer"
+                           class="inline-block px-4 py-1.5 rounded-lg bg-thrive-blue text-white text-sm font-semibold hover:bg-thrive-green transition shadow">
+                            View More on Flickr
+                        </a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+    <section id="photo-archive" class="py-16 bg-white scroll-mt-24">
+        <div class="container mx-auto px-4 max-w-3xl">
+    
+            <!-- Section Header -->
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-thrive-green mb-3 uppercase tracking-wide">
+                    All Photo Albums
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 max-w-xl mx-auto">
+                    Browse every Thrive Thursday photo album on Flickr, organized by date.
+                </p>
+            </div>
+    
+            <!-- Album List -->
+            <ul class="space-y-3 text-sm md:text-base">
+    
+                <!-- August 14, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">August 14, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720328467638"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- July 24, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">July 24, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720327783925"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- July 18, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">July 18, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720327654149"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- July 11, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">July 11, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720327488258/"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- June 26, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">June 26, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720327159246/"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- June 19, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">June 19, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720327013278/"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- June 12, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">June 12, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326864399/"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- June 5, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">June 5, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326660985/"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- May 29, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">May 29, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326522319/"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+                <!-- May 15, 2025 -->
+                <li class="flex items-center justify-between bg-gray-50 px-4 py-3 rounded-lg border border-gray-100">
+                    <span class="font-semibold text-gray-800">May 15, 2025</span>
+                    <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326151726"
+                       target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center text-thrive-blue hover:text-thrive-green transition">
+                        <i class="fab fa-flickr mr-2"></i> View album
+                    </a>
+                </li>
+    
+            </ul>
+        </div>
+    </section>
+    
+    
+
+    <!-- PARTNERS -->
+    <section id="partners" class="py-20 bg-white scroll-mt-24">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-thrive-green mb-12 uppercase">Partners</h2>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-80">
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">MovingForward</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">RichCityRides</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">ContraCostaCounty</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">Lifelong Medical</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">UrbanTilth</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">TheLatinaCenter</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">City of Richmond</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">Richmond SOL</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">First 5 CC</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">Kaiser Permanente</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">WhitePonyExpress</div>
-                <div class="h-20 bg-gray-100 flex items-center justify-center text-xs text-gray-500 font-bold p-2 border rounded">WestCountyReads</div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-thrive-green mb-4 uppercase inline-block border-b-4 border-thrive-blue pb-2 tracking-wide">
+                    Partners
+                </h2>     
+                <p class="text-base md:text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
+                    Thrive Thursdays is made possible by the support of these community partners and sponsors.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl py-10 px-6 md:px-10 shadow-inner border border-gray-100">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 items-center justify-center">
+                    
+                    <img src="MovingForward.avif" alt="Moving Forward logo" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition-transform duration-200 grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="RichCityRides.avif" alt="Rich City Rides logo" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition-transform duration-200 grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="ContraCostaCounty.avif" alt="Contra Costa County logo" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition-transform duration-200 grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="Lifelong Medical Care.avif" alt="Lifelong Medical Care logo" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition-transform duration-200 grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="UrbanTilth.avif" alt="Urban Tilth logo" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition-transform duration-200 grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    
+                    <img src="WCRG.avif" alt="WCRG" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="Logo_TheLatinaCenter.avif" alt="The Latina Center" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="ContraCostaHealth.gif" alt="Contra Costa Health" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="Yes_to_Neighborhoods.png" alt="Yes to Neighborhoods" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="City_Of_Richmond.png" alt="City of Richmond" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    
+                    <img src="richmond_sol.png" alt="Richmond SOL" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="First-5-Contra-Costa-Logo.png" alt="First 5" class="h-20 w-auto mx-auto object-contain transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100 filter brightness-150">
+                    <img src="KP_Thrive.avif" alt="Kaiser Permanente" class="h-20 w-auto mx-auto object-contain transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100 filter brightness-150">
+                    <img src="WhitePonyExpress.png" alt="White Pony Express" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="WestCountyReads.png" alt="West County Reads" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+                    <img src="RisingJuntosPartner.png" alt="West County Reads" class="h-20 w-auto mx-auto object-contain hover:scale-110 transition grayscale hover:grayscale-0 opacity-80 hover:opacity-100">
+               
+                </div>
             </div>
         </div>
     </section>
-
-    <footer class="bg-thrive-dark text-gray-400 py-12 border-t border-gray-800">
-        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8">
+    
+    <!-- FOOTER -->
+    <footer class="bg-thrive-dark text-gray-400 py-20 border-t border-gray-800">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12">
             <div>
-                <h4 class="text-white text-lg font-bold mb-4">Subscribe to our Newsletter</h4>
-                <form class="flex flex-col sm:flex-row gap-2">
-                    <input type="email" placeholder="Email Address" class="px-4 py-2 rounded bg-gray-800 border border-gray-600 focus:border-thrive-green focus:outline-none flex-grow">
-                    <button class="bg-thrive-green text-white px-6 py-2 rounded font-bold hover:bg-green-600 transition">Join</button>
+                <h4 class="text-white text-xl font-bold mb-6">Newsletter</h4>
+                <p class="mb-5 text-base">Subscribe to the Thrive Thursday and John Gioia's Newsletter</p>
+                <form class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" placeholder="Email Address" class="px-5 py-3 rounded-lg bg-gray-800 border border-gray-600 focus:border-thrive-green focus:ring-1 focus:ring-thrive-green focus:outline-none flex-grow text-white transition">
+                    <button class="bg-thrive-green text-white px-8 py-3 rounded-lg font-bold hover:bg-green-600 transition shadow-lg">Join</button>
                 </form>
             </div>
             
             <div class="flex flex-col md:items-end justify-center">
-                <div class="flex space-x-6 mb-4 text-2xl">
-                    <a href="#" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fas fa-envelope"></i></a>
+                <div class="flex space-x-6 mb-6 text-3xl">
+                    <a href="https://www.facebook.com/westcccountynews/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/westcccountygioia/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition transform hover:scale-110"><i class="fas fa-envelope"></i></a>
                 </div>
                 <p class="text-sm">© 2025 by Thrive Thursdays.</p>
-                <p class="text-xs mt-1">Powered by Community</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Simple Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-    </script>
 </body>
 </html>
