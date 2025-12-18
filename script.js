@@ -1,5 +1,94 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+
+    async function submitEmail(userEmail) {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxxg-HJJvU52cfM4IMOXUDSM9o6Azqh7zc0xYEOAzJHrChhIMjnWDoXOKS8o5I-tzG9/exec';
+        
+        try {
+          const response = await fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors', // Essential for Google Apps Script requests
+            cache: 'no-cache',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: userEmail })
+          });
+      
+          console.log("Email submitted successfully!");
+          return { success: true };
+          
+        } catch (error) {
+          console.error('Error!', error.message);
+          return { success: false, error: error.message };
+        }
+      }
+
+    // Email subscription form handling
+    const emailSubscriptionForm = document.getElementById('email-subscription-form');
+    const submitBtn = document.getElementById('submit-email-btn');
+    const submitBtnText = document.getElementById('submit-btn-text');
+    const submitBtnLoading = document.getElementById('submit-btn-loading');
+    const messageDiv = document.getElementById('email-subscription-message');
+    
+    if (emailSubscriptionForm) {
+        emailSubscriptionForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Prevent double submission
+            if (submitBtn.disabled) {
+                return;
+            }
+            
+            const emailInput = document.getElementById('email-address');
+            const email = emailInput.value.trim();
+            
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                messageDiv.textContent = 'Please enter a valid email address.';
+                messageDiv.className = 'mt-4 text-center text-red-400';
+                messageDiv.classList.remove('hidden');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtnText.classList.add('hidden');
+            submitBtnLoading.classList.remove('hidden');
+            messageDiv.classList.add('hidden');
+            
+            // Submit email to Google Sheets
+            const result = await submitEmail(email);
+            
+            // Hide loading state
+            submitBtn.disabled = false;
+            submitBtnText.classList.remove('hidden');
+            submitBtnLoading.classList.add('hidden');
+            
+            if (result.success) {
+                // Show success message
+                messageDiv.textContent = 'Thank you for subscribing! You\'ll receive updates about upcoming events.';
+                messageDiv.className = 'mt-4 text-center text-green-400';
+                messageDiv.classList.remove('hidden');
+                
+                // Reset form
+                emailInput.value = '';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            } else {
+                // Show error message
+                messageDiv.textContent = 'Sorry, there was an error submitting your email. Please try again.';
+                messageDiv.className = 'mt-4 text-center text-red-400';
+                messageDiv.classList.remove('hidden');
+            }
+        });
+    }
+
     // Get all navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
