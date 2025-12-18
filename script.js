@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailSubscriptionForm = document.getElementById('email-subscription-form');
     const submitBtn = document.getElementById('submit-email-btn');
     const submitBtnText = document.getElementById('submit-btn-text');
-    const submitBtnLoading = document.getElementById('submit-btn-loading');
+    const submitBtnSpinner = document.getElementById('submit-btn-spinner');
     const messageDiv = document.getElementById('email-subscription-message');
     
     if (emailSubscriptionForm) {
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Show loading state
+            // Show loading state - keep "Sign Up" text visible and show spinner
             submitBtn.disabled = true;
-            submitBtnText.classList.add('hidden');
-            submitBtnLoading.classList.remove('hidden');
+            submitBtnText.classList.remove('hidden');
+            submitBtnSpinner.classList.remove('hidden');
             messageDiv.classList.add('hidden');
             
             // Submit email to Google Sheets
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hide loading state
             submitBtn.disabled = false;
             submitBtnText.classList.remove('hidden');
-            submitBtnLoading.classList.add('hidden');
+            submitBtnSpinner.classList.add('hidden');
             
             if (result.success) {
                 // Show success message
@@ -85,6 +85,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 messageDiv.textContent = 'Sorry, there was an error submitting your email. Please try again.';
                 messageDiv.className = 'mt-4 text-center text-red-400';
                 messageDiv.classList.remove('hidden');
+            }
+        });
+    }
+
+    // Handle Subscribe button click - scroll to newsletter and focus email input
+    const subscribeButton = document.querySelector('a[href="#newsletter"]');
+    if (subscribeButton) {
+        subscribeButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const newsletterSection = document.getElementById('newsletter');
+            const emailInput = document.getElementById('email-address');
+            
+            if (newsletterSection && emailInput) {
+                const headerOffset = 80; // Account for fixed header
+                const elementPosition = newsletterSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Wait for scroll to complete, then focus and highlight the input
+                setTimeout(() => {
+                    emailInput.focus();
+                    emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 600); // Wait for smooth scroll to complete
             }
         });
     }
