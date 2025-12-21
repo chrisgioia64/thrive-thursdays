@@ -6,6 +6,15 @@ The live website is located at [Thrive Thursdays](http://www.thrivethursdays.net
 ## Weekly Checklist
 During the summer months, every week we should make the following content changes.
 
+1. Update the hero section to list the next Thrive Thursday event:
+   
+   <img width="418" height="287" alt="image" src="https://github.com/user-attachments/assets/602e4645-22f1-4030-99e3-7d3a8e509beb" />
+2. Update the Media section with 1-2 new reels from the last event.
+   
+<img width="689" height="444" alt="image" src="https://github.com/user-attachments/assets/1d5bbd34-1d7b-4c2c-a3f2-46ceded2918e" />
+
+3. Update the Photos section with the lastest photo album.
+4. Add the new photo album to the `All Photo Albums` section.
 
 ## Services
 
