@@ -64,12 +64,16 @@
 <body class="bg-white text-gray-800 font-sans leading-relaxed">
 
     <nav class="bg-white shadow-md fixed w-full z-50 top-0">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-thrive-green uppercase tracking-wide">
+        <div class="container mx-auto px-4 py-4 relative flex items-center">
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-thrive-green focus:outline-none absolute left-4">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <a href="#home" class="text-4xl font-bold text-thrive-green uppercase tracking-wide mx-auto">
                 Thrive <span class="text-thrive-blue">Thursdays</span>
             </a>
 
-            <div class="hidden md:flex space-x-6 font-medium text-gray-600">
+            <div class="hidden md:flex space-x-6 font-medium text-gray-600 absolute right-4">
                 <a href="#home" data-section="home" class="hover:text-thrive-green transition nav-link">Home</a>
                 <a href="#event-info" data-section="event-info" class="hover:text-thrive-green transition nav-link">Event Info</a>
                 <a href="#mission" data-section="mission" class="hover:text-thrive-green transition nav-link">Mission</a>
@@ -77,10 +81,6 @@
                 <a href="#media" data-section="media" class="hover:text-thrive-green transition nav-link">Media</a>
                 <a href="#partners" data-section="partners" class="hover:text-thrive-green transition nav-link">Partners</a>
             </div>
-
-            <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-thrive-green focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-gray-50 border-t border-gray-100">
@@ -103,7 +103,7 @@
         </div>
         
         <div class="relative container mx-auto px-4 text-center text-white z-10">
-            <div class="max-w-[26rem] mx-auto bg-black/40 p-8 md:p-10 rounded-2xl border border-gray-500/50 backdrop-blur-md shadow-2xl">
+            <div class="max-w-[26rem] mx-auto bg-black/5 p-8 md:p-10 rounded-2xl border border-gray-500/50 backdrop-blur-md shadow-2xl">
     
                 <p class="text-xl md:text-2xl font-bold mb-4 text-white">Coming Summer 2026</p>
                 
@@ -180,10 +180,10 @@
     </section>
 
 
-    <section class="py-12 bg-white">
+    <section id="mission" class="py-12 bg-white scroll-mt-24">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">
-            Our Mission
+            Mission
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             
@@ -460,27 +460,27 @@
                 <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition">
                     
                     <p class="text-center font-bold mb-4 text-base tracking-wider">
-                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326864399/"
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720328467638/"
                            target="_blank" rel="noopener noreferrer"
                            class="text-thrive-blue hover:text-thrive-green transition">
-                            June 12, 2025
+                            August 14, 2025
                         </a>
                     </p>
     
                     <div class="aspect-[4/3] mb-4 rounded-lg overflow-hidden bg-gray-100">
-                        <img src="ThriveThursday_2025_06_12_1.jpeg"
-                             alt="Thrive Thursday June 12, 2025 – photo 1"
+                        <img src="ThriveThursday_2025_08_14_01.jpg"
+                             alt="Thrive Thursday August 14, 2025 – photo 1"
                              class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
                     </div>
     
                     <div class="aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
-                        <img src="ThriveThursday_2025_06_12_2.jpeg"
-                             alt="Thrive Thursday June 12, 2025 – photo 2"
+                        <img src="ThriveThursday_2025_08_14_02.jpg"
+                             alt="Thrive Thursday August 14, 2025 – photo 2"
                              class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
                     </div>
     
                     <div class="mt-6 text-center">
-                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720326864399/"
+                        <a href="https://www.flickr.com/photos/94688773@N04/albums/72177720328467638/"
                            target="_blank" rel="noopener noreferrer"
                            class="inline-block px-4 py-1.5 rounded-lg bg-thrive-blue text-white text-sm font-semibold hover:bg-thrive-green transition shadow">
                             View More
